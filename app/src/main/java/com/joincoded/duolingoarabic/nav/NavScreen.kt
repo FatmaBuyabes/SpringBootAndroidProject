@@ -2,11 +2,7 @@ package com.joincoded.duolingoarabic.nav
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.joincoded.duolingoarabic.viewModel.AccountViewModel
-import com.joincoded.duolingoarabic.viewModel.ArabicViewModel
 
 @Composable
 fun NavScreen() {

@@ -17,7 +17,7 @@ interface ApplicationApiService {
     @POST(Constants.loginEndpoint)
     suspend fun login(@Body user: User): Response<TokenResponse>
 
-    @GET(Constants.cahptersEndpoint)
+    @GET(Constants.cahpterEndpoint)
     suspend fun getAllChapters(): List<Chapter>
 
 

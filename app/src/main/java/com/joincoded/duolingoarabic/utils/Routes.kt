@@ -8,7 +8,7 @@ class Routes {
         const val userRoute = "userRoute"
         const val chaptersRoute = "chaptersRoute"
         const val lessonsRoute = "lessonRoute"
-        const val progressRoute = "proggressRoute"
+        const val progressRoute = "progressRoute"
 
 
     }
