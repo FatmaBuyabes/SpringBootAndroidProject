@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     )
 
                     Text(text = "${authViewMode.token?.token}")
-                    Button(onClick = { gameViewMode.getAllLessonsOfChapter(authViewMode.token) }) { //IT IS NOT WOORKKIINGGG
+                    Button(onClick = { gameViewMode.getAllLessonsOfChapter(authViewMode.token?.token!!) }) { //IT IS NOT WOORKKIINGGG
 
                     }
 

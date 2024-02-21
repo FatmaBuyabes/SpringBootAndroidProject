@@ -24,11 +24,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.composable.OnBoard.OnBoardingQuestion
 
 
 @Composable
 
-fun HomeScreen() {
+fun ChapterScreen() {
 
     Surface(
         modifier = Modifier
@@ -88,3 +89,4 @@ fun HomeScreen() {
         }
     }
 }
+

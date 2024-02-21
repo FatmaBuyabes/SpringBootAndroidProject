@@ -35,12 +35,7 @@ class AuthAccountViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = apiService.signup(User(username,password,name,email,null))
-                if (response.isSuccessful) {
 
-                } else {
-                    // Handle unsuccessful signup response
-                    println("Signup failed with code: ${response.code()}, message: ${response.message()}")
-                }
             } catch (e: Exception) {
                 // Handle exceptions
                 println("Error during signup: $e")
@@ -74,7 +69,7 @@ class AuthAccountViewModel : ViewModel() {
      fun saveProgress(user: User,question: Question,lesson: Lesson,chapter: Chapter) {
         viewModelScope.launch {
             try {
-                val progress = apiService.saveProgress(token,user,question,lesson,chapter)
+                val progress = apiService.saveProgress(token?.token,user,question,lesson,chapter)
             } catch (e: Exception) {
                 println("Error $e")
 

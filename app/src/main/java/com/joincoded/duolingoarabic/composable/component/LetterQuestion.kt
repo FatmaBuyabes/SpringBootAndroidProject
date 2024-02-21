@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,15 +24,21 @@ import com.joincoded.duolingoarabic.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LetterQuestion() {
+
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .paint(
+                painterResource(id = R.drawable.backround_question_image),
+                contentScale = ContentScale.FillBounds
+            ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.a), //change
-            contentDescription = "Image"
+            painter = painterResource(id = R.drawable.a),
+            contentDescription = "Image",
+            modifier = Modifier
         )
         Spacer(modifier = Modifier.height(36.dp))
 
@@ -40,34 +48,27 @@ fun LetterQuestion() {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
+                contentDescription = "Image",
+                modifier = Modifier.clickable {/* img */ }
             )
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(36.dp))
 
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
-                modifier = Modifier.clickable{/* img */}
+                modifier = Modifier.clickable {/* img */ }
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(45.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
-            )
-            Spacer(modifier = Modifier.height(12.dp))
+        Image(
+            painter = painterResource(id = R.drawable.a),
+            contentDescription = "Image",
+            modifier = Modifier.clickable {/* img */ }
 
-            Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
-            )
-        }
+        )
+
     }
-
 }
+

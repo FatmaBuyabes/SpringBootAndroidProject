@@ -1,37 +1,35 @@
 package com.joincoded.duolingoarabic.nav
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.joincoded.duolingoarabic.utils.Routes
 
 @Composable
 fun NavScreen() {
-//    val navController = rememberNavController()
-//    val viewModel: ArabicViewModel = viewModel()
-//    val viewModelAccount : AccountViewModel = viewModel()
-//
-//
-//    var startDestination = onboardingRoute
-//    if (viewModel.token?.token != null) {
-//        startDestination = loginRoute
-//        navController.navigate(loginRoute)
-//    }
+    val navController = rememberNavController()
 
+    NavHost(navController = navController, startDestination = Routes.onBoardingRoute) {
+        composable(Routes.onBoardingRoute) {
+        }
 
-//
-//
-//    NavHost(navController = navController, startDestination = startDestination) {
-//        composable(onboardingRoute) {
-//            WelcomeScreen(navController = navController, viewModel)
-//        }
-//
-//        composable(loginRoute) {
-//            loginRoute(viewModel)
-//        }
-//
-//        composable(loginRoute){
-//            BankMainScreen(navController = navController, viewModel)
-//        }
-//
-//    }
+        composable(Routes.loginRoute) {
+        }
+
+        composable(Routes.signupRoute){
+        }
+
+        composable(Routes.chaptersRoute){
+        }
+
+        composable(Routes.lessonsRoute){
+        }
+
+        composable(Routes.progressRoute){
+        }
+
+        composable(Routes.userRoute){
+        }
+    }
 }
