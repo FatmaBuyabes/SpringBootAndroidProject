@@ -24,13 +24,13 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 
 @Composable
-fun LoginScreen() {
-    var name by remember { mutableStateOf("") }
+fun LoginScreen(viewModel: AuthAccountViewModel = androidx.lifecycle.viewmodel.compose.viewModel() ) {
+    var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
 
@@ -49,8 +49,8 @@ fun LoginScreen() {
             modifier = Modifier.height(10.dp)
         )
         TextField(
-            value = name,
-            onValueChange = { name = it },
+            value = username,
+            onValueChange = { username = it },
             label = { Text("Name") },
             modifier = Modifier.fillMaxWidth()
         )

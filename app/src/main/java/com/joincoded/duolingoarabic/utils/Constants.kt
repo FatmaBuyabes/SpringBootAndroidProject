@@ -8,7 +8,7 @@ class Constants {
 
         // here we will go to a specific chapter
         const val baseProgress = "/progress"
-        const val questionsEndpoint = "/user/question"
+        const val questionsEndpoint = "/user/question/all-questions"
         const val userEndpoint = "user"
         const val lessonsEndpoint = "/lessons"
         const val accountInfo = "accountInfo"

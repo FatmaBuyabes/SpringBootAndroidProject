@@ -6,6 +6,7 @@ import com.joincoded.duolingoarabic.data.Progress
 import com.joincoded.duolingoarabic.data.Question
 import com.joincoded.duolingoarabic.data.User
 import com.joincoded.duolingoarabic.data.response.LoginResponse
+import com.joincoded.duolingoarabic.data.response.QuestionResponse
 import com.joincoded.duolingoarabic.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body
@@ -31,32 +32,30 @@ interface ApplicationApiService {
         chapter: Chapter
     ): Response<LoginResponse>
 
-    @POST(Constants.progressEndpoint)
-    suspend fun CurrentQuestion(@Header(Constants.authorization) token: String?) //viewmodel
-
-    @POST(Constants.progressEndpoint)
-    suspend fun CurrentLesson(@Header(Constants.authorization) token: String?)
+    @GET(Constants.accountInfo)
+    suspend fun getAccountInfo(@Header(Constants.authorization) token: String?): User
 
     @GET(Constants.chapterEndpoint)
     suspend fun getAllChapters(@Header(Constants.authorization) token: String?): List<Chapter>
 
-    @GET(Constants.accountInfo)
-    suspend fun getAccountInfo(@Header(Constants.authorization) token: String?): User
+    @GET("${Constants.lessonsEndpoint}/{chapterId}")
+    suspend fun getAllLessonsOfChapter(
+        @Header(Constants.authorization) token: String?,
+        @Path("chapterId") chapterId: Int
+    ): List<Lesson>
 
-    @GET(Constants.lessonsEndpoint)
-    suspend fun getAllLessonsOfChapter(@Header(Constants.authorization) token: String?): List<Lesson>
-
-    @GET(Constants.questionsEndpoint)
-    suspend fun getAllQuestionsAndAnswers(@Header(Constants.authorization) token: String?): List<Question>
-
-    @GET("${Constants.baseChapter}/chapters/{chapterId}")
-    suspend fun getChapterById(@Header(Constants.authorization) token: String?, @Path("chapterId") chapterId: String): Chapter
-
-    @GET("${Constants.baseChapter}/lessons/{lessonId}")
-    suspend fun getLessonById(@Header(Constants.authorization) token: String?, @Path("lessonId") lessonId: String): Lesson
+    @GET("${Constants.questionsEndpoint}/{chapterId}")
+    suspend fun getAllQuestionsByChapterId(
+        @Header(Constants.authorization) token: String?,
+        @Path("chapterId") chapterId: Int
+    ): List<Question>
 
     @GET("${Constants.questionsEndpoint}/{lessonId}")
-    suspend fun getQuestionsByLessonId(@Header(Constants.authorization) token: String?, @Path("lessonId") lessonId: String): List<Question>
+    suspend fun getAllQuestionsByLessonId(
+        @Header(Constants.authorization) token: String?,
+        @Path("lessonId") lessonId: Int
+    ): List<Question>
+
     @POST(Constants.progressEndpoint)
     suspend fun saveProgress(
         @Header(Constants.authorization) token: String?,

@@ -21,14 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun SignUpScreen(viewModel: GameViewModel) {
+fun SignUpScreen(viewModel: AuthAccountViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+        val username by remember { mutableStateOf("")
+        }
 
 
     Column(
@@ -72,7 +75,7 @@ fun SignUpScreen(viewModel: GameViewModel) {
             modifier = Modifier.height(16.dp)
         )
         Button(
-            onClick = { /*Handle sign up info here*/ },
+            onClick = { viewModel.signup(username, password, "",email)},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)

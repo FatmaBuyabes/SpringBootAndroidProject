@@ -51,14 +51,14 @@ fun CompleteQuestion() {
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
-                modifier = Modifier.clickable {/* img */ }
+                modifier = Modifier.clickable {}
             )
             Spacer(modifier = Modifier.height(36.dp))
 
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
-                modifier = Modifier.clickable {/* img */ }
+                modifier = Modifier.clickable { }
             )
         }
 
@@ -67,7 +67,7 @@ fun CompleteQuestion() {
         Image(
             painter = painterResource(id = R.drawable.a),
             contentDescription = "Image",
-            modifier = Modifier.clickable {/* img */ }
+            modifier = Modifier.clickable {}
 
         )
 

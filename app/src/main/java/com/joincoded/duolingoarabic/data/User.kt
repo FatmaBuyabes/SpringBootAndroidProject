@@ -5,6 +5,7 @@ data class User(
     var password: String,
     var name: String? = null,
     var email: String? =null,
-    var token: String? = null
+    var token: String? = null,
+    var id: Int? = null
 )
 

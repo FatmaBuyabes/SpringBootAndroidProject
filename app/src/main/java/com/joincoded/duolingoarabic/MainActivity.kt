@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.joincoded.duolingoarabic.composable.screen.LoginScreen
+import com.joincoded.duolingoarabic.nav.NavScreen
 import com.joincoded.duolingoarabic.ui.theme.DuolingoArabicTheme
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
@@ -27,19 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val authViewMode: AuthAccountViewModel = viewModel()
-                    val gameViewMode: GameViewModel = viewModel()
-
-                    authViewMode.login(
-                        "am@gmail.com",
-                        "1234"
-                    )
-
-                    Text(text = "${authViewMode.token?.token}")
-                    Button(onClick = { gameViewMode.getAllLessonsOfChapter(authViewMode.token?.token!!) }) { //IT IS NOT WOORKKIINGGG
-
-                    }
-
+                    NavScreen()
 
                 }
             }

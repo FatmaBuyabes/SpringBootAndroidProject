@@ -12,6 +12,9 @@ import com.joincoded.duolingoarabic.interfaceAPI.ApplicationApiService
 import kotlinx.coroutines.launch
 
 class GameViewModel(private val apiService: ApplicationApiService) : ViewModel() {
+    var currentQuestion: MutableState<Int> = mutableStateOf(0)
+    var currentChapter: MutableState<Int> = mutableStateOf(0)
+    var currentLesson: MutableState<Int> = mutableStateOf(0)
 
     var chapters: MutableState<List<Chapter>?> = mutableStateOf(null)
         private set
@@ -34,27 +37,27 @@ class GameViewModel(private val apiService: ApplicationApiService) : ViewModel()
         }
     }
 
-    fun fetchLessonsByChapterId(chapterId: String, token: String?) {
+    fun fetchLessonsByChapterId(token: String?, chapterId: Int) {
         viewModelScope.launch {
             try {
-                lessons.value = apiService.getAllLessonsOfChapter(token)
+                lessons.value = apiService.getAllLessonsOfChapter(token, chapterId)
             } catch (e: Exception) {
                 println("Failed to fetch lessons: ${e.message}")
             }
         }
     }
 
-    fun fetchQuestionsByLessonId(lessonId: String, token: String?) {
+    fun fetchQuestionsByLessonId(token: String?, lessonId: Int) {
         viewModelScope.launch {
             try {
-                questions.value = apiService.getAllQuestionsAndAnswers(token)
+                questions.value = apiService.getAllQuestionsByLessonId(token, lessonId)
             } catch (e: Exception) {
                 println("Failed to fetch questions: ${e.message}")
             }
         }
     }
 
-    fun saveProgress(chapterId: String, lessonId: String, questionId: String, score: Int, token: String?) {
+    fun saveProgress(token: String?, chapterId: String, lessonId: String, questionId: String, score: Int) {
         viewModelScope.launch {
             try {
                 val progressData = Progress(chapterId, lessonId, questionId, score)

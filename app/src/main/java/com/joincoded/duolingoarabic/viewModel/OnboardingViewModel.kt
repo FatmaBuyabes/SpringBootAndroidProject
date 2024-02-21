@@ -1,6 +1,7 @@
 package com.joincoded.duolingoarabic.viewModel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 
 class OnboardingViewModel : ViewModel() {
     var onboardingCompleted: Boolean = false
@@ -15,5 +16,11 @@ class OnboardingViewModel : ViewModel() {
 
     fun completeOnboardingQuestion() {
         onboardingQuestionCompleted = true
+    }
+
+    fun checkLoggedIn(isLoggedIn: Boolean) {
+        if (isLoggedIn) {
+            completeOnboarding()
+        }
     }
 }
