@@ -1,6 +1,6 @@
-package com.joincoded.duolingoarabic.composable.component
+package com.joincoded.duolingoarabic.composable.OnBoard
 
-import android.annotation.SuppressLint
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,54 +21,54 @@ import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun LetterQuestion() {
-
+fun OnBoardingQuestion(){
     Column(
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painterResource(id = R.drawable.backround_question_image),
+                painterResource(id = R.drawable.street),
                 contentScale = ContentScale.FillBounds
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.a),
-            contentDescription = "Image",
-            modifier = Modifier
-        )
-        Spacer(modifier = Modifier.height(36.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
+
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
-                modifier = Modifier.clickable {/* img */ }
+                modifier = Modifier
             )
             Spacer(modifier = Modifier.height(36.dp))
 
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.a),
+                    contentDescription = "Image",
+                    modifier = Modifier.clickable {/* img */ }
+                )
+                Spacer(modifier = Modifier.height(36.dp))
+
+                Image(
+                    painter = painterResource(id = R.drawable.a),
+                    contentDescription = "Image",
+                    modifier = Modifier.clickable {/* img */ }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(45.dp))
+
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
                 modifier = Modifier.clickable {/* img */ }
+
             )
+
         }
-
-        Spacer(modifier = Modifier.height(45.dp))
-
-        Image(
-            painter = painterResource(id = R.drawable.a),
-            contentDescription = "Image",
-            modifier = Modifier.clickable {/* img */ }
-
-        )
-
-    }
 }
 

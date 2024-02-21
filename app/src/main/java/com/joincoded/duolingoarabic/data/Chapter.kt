@@ -1,3 +1,3 @@
 package com.joincoded.duolingoarabic.data
 
-data class Chapter(val imageUrl: String?)
+data class Chapter(val imageUrl: String?, val chapterID: Int )

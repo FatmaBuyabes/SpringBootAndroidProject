@@ -5,11 +5,11 @@ import com.joincoded.duolingoarabic.data.Lesson
 
 class LessonRepo {
     companion object {
-        var dummyBranchesList = listOf(
-            Lesson(""),
-            Lesson(""),
-            Lesson("")
-        )
+//        var dummyBranchesList = listOf(
+//            Lesson(""),
+//            Lesson(""),
+//            Lesson("")
+//        )
 
     }
 }
