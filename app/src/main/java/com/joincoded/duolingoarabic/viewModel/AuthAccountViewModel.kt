@@ -70,17 +70,7 @@ class AuthAccountViewModel : ViewModel() {
     private fun saveToken(token: String?) {
 
     }
-
-     fun saveProgress(user: User,question: Question,lesson: Lesson,chapter: Chapter) {
-        viewModelScope.launch {
-            try {
-                val progress = apiService.saveProgress(token,user,question,lesson,chapter)
-            } catch (e: Exception) {
-                println("Error $e")
-
-            }
-        }
-    }
+    
     private fun getAccountInfo() {
         viewModelScope.launch {
             try {

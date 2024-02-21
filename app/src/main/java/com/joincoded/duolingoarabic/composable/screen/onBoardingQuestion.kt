@@ -19,10 +19,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 
 @Composable
-fun OnBoardingQuestion(){
+fun OnBoardingQuestion(viewModel: OnboardingViewModel){
     Column(
         modifier = Modifier
             .fillMaxSize()

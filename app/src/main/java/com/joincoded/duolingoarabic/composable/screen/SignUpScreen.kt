@@ -21,10 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(viewModel: GameViewModel) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }

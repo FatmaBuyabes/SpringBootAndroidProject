@@ -21,11 +21,13 @@ import androidx.compose.ui.res.painterResource
 
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
+import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PhaseScreen() {
+fun PhaseScreen(viewModel: GameViewModel) {
 
     TopAppBar(
         title = { },

@@ -35,10 +35,10 @@ class MainActivity : ComponentActivity() {
                         "1234"
                     )
 
-                    Text(text = "${authViewMode.token?.token}")
-                    Button(onClick = { gameViewMode.getAllLessonsOfChapter(authViewMode.token) }) { //IT IS NOT WOORKKIINGGG
-
-                    }
+//                    Text(text = "${authViewMode.token?.token}")
+//                    Button(onClick = { gameViewMode.getAllLessonsOfChapter(authViewMode.token) }) { //IT IS NOT WOORKKIINGGG
+//
+//                    }
 
 
                 }
