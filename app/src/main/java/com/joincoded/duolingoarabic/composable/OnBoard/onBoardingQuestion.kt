@@ -1,4 +1,4 @@
-package com.joincoded.duolingoarabic.composable.screen
+package com.joincoded.duolingoarabic.composable.OnBoard
 
 
 import androidx.compose.foundation.Image
@@ -34,45 +34,42 @@ fun OnBoardingQuestion(viewModel: OnboardingViewModel){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.a),
-            contentDescription = "Image"
-        )
-        Spacer(modifier = Modifier.height(36.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
+
             Image(
                 painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
+                contentDescription = "Image",
+                modifier = Modifier
             )
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(36.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.a),
+                    contentDescription = "Image",
+                    modifier = Modifier.clickable {/* img */ }
+                )
+                Spacer(modifier = Modifier.height(36.dp))
+
+                Image(
+                    painter = painterResource(id = R.drawable.a),
+                    contentDescription = "Image",
+                    modifier = Modifier.clickable {/* img */ }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(45.dp))
 
             Image(
                 painter = painterResource(id = R.drawable.a),
                 contentDescription = "Image",
                 modifier = Modifier.clickable {/* img */ }
+
             )
+
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image"
-            )
-        }
-    }
 }
+

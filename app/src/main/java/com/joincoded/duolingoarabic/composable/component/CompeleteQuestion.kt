@@ -1,3 +1,5 @@
+package com.joincoded.duolingoarabic.composable.component
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,10 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
-import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 @Composable
-fun CompleteQuestion(viewModel: GameViewModel) {
+fun CompleteQuestion() {
     var question by remember { mutableStateOf("") }
 
     Column(
@@ -72,3 +73,4 @@ fun CompleteQuestion(viewModel: GameViewModel) {
 
     }
 }
+
