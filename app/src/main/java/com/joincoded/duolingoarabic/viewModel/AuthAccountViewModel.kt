@@ -1,15 +1,16 @@
 package com.joincoded.duolingoarabic.viewModel
 
 import android.app.Application
-import android.content.Context
-import android.provider.Settings.Global.putString
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.joincoded.duolingoarabic.data.Chapter
+import com.joincoded.duolingoarabic.data.Lesson
+import com.joincoded.duolingoarabic.data.Question
 import com.joincoded.duolingoarabic.data.User
-import com.joincoded.duolingoarabic.data.response.TokenResponse
+import com.joincoded.duolingoarabic.data.response.LoginResponse
 import com.joincoded.duolingoarabic.interfaceAPI.ApplicationApiService
 import com.joincoded.duolingoarabic.singelton.RetrofitHelper
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class AuthAccountViewModel : ViewModel() {
     private val apiService = RetrofitHelper.getInstance().create(ApplicationApiService::class.java)
-    var token: TokenResponse? by mutableStateOf(null)
+    var token: LoginResponse? by mutableStateOf(null)
     var currentUser: User? by mutableStateOf(null)
     private val sharedPreferencesKey = "user_token"
     var application: Application? = null
@@ -35,9 +36,7 @@ class AuthAccountViewModel : ViewModel() {
             try {
                 val response = apiService.signup(User(username,password,name,email,null))
                 if (response.isSuccessful) {
-                    token = response.body()
-                    saveToken(token?.token)
-                    getAccountInfo()
+
                 } else {
                     // Handle unsuccessful signup response
                     println("Signup failed with code: ${response.code()}, message: ${response.message()}")
@@ -72,10 +71,20 @@ class AuthAccountViewModel : ViewModel() {
 
     }
 
+     fun saveProgress(user: User,question: Question,lesson: Lesson,chapter: Chapter) {
+        viewModelScope.launch {
+            try {
+                val progress = apiService.saveProgress(token,user,question,lesson,chapter)
+            } catch (e: Exception) {
+                println("Error $e")
+
+            }
+        }
+    }
     private fun getAccountInfo() {
         viewModelScope.launch {
             try {
-                currentUser = apiService.getAccountInfo(token?.getBearerToken())
+                currentUser = apiService.getAccountInfo(token?.token)
                 println(currentUser?.username)
             } catch (e: Exception) {
                 println("Error $e")

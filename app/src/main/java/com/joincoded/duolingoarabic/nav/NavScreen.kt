@@ -6,16 +6,16 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun NavScreen() {
-    val navController = rememberNavController()
-    val viewModel: ArabicViewModel = viewModel()
-    val viewModelAccount : AccountViewModel = viewModel()
-
-
-    var startDestination = onboardingRoute
-    if (viewModel.token?.token != null) {
-        startDestination = loginRoute
-        navController.navigate(loginRoute)
-    }
+//    val navController = rememberNavController()
+//    val viewModel: ArabicViewModel = viewModel()
+//    val viewModelAccount : AccountViewModel = viewModel()
+//
+//
+//    var startDestination = onboardingRoute
+//    if (viewModel.token?.token != null) {
+//        startDestination = loginRoute
+//        navController.navigate(loginRoute)
+//    }
 
 
 //
