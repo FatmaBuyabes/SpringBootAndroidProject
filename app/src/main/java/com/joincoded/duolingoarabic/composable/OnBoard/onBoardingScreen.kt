@@ -18,11 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joincoded.duolingoarabic.R
-
+import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 
 @Composable
-fun onBoardingScreen(){
+fun onBoardingScreen(viewModel: OnboardingViewModel){
 
     Surface(
         modifier = Modifier
@@ -49,7 +49,7 @@ fun onBoardingScreen(){
 
 
             ) {
-                Text(" ابدا", fontSize = 80.sp)
+                Text(" ابدأ", fontSize = 80.sp)
 
             }
 

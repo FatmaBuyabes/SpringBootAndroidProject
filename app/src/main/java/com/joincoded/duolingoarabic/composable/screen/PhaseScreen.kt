@@ -22,13 +22,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PhaseScreen() {
+fun PhaseScreen(authViewModel: AuthAccountViewModel,viewModel: GameViewModel, navigateToQuestionsScreen: (Int) -> Unit) {
     Column(
-
         modifier = Modifier
             .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -49,7 +50,7 @@ fun PhaseScreen() {
             painter = painterResource(id = R.drawable.phase3),
             contentDescription = "Image",
             modifier = Modifier
-                .clickable {/* img */ }
+                .clickable { navigateToQuestionsScreen(3) }
                 .size(220.dp)
                 .align(Alignment.Start),
 
@@ -61,7 +62,7 @@ fun PhaseScreen() {
             painter = painterResource(id = R.drawable.phase2),
             contentDescription = "Image",
             modifier = Modifier
-                .clickable {/* img */ }
+                .clickable { navigateToQuestionsScreen(2) }
                 .size(220.dp)
                 .align(Alignment.CenterHorizontally),
 
@@ -71,7 +72,7 @@ fun PhaseScreen() {
             painter = painterResource(id = R.drawable.phase1),
             contentDescription = "Image",
             modifier = Modifier
-                .clickable {/* img */ }
+                .clickable { navigateToQuestionsScreen(1) }
                 .size(220.dp)
                 .align(Alignment.End),
 
@@ -80,8 +81,3 @@ fun PhaseScreen() {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun Bankpreview() {
-    PhaseScreen()
-}

@@ -17,11 +17,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun PictureQuestion(){
+fun PictureQuestion(viewModel: GameViewModel){
+    val question = viewModel.questions.value!![viewModel.currentQuestion.value]
 
     Column(
         modifier = Modifier
@@ -33,9 +36,9 @@ fun PictureQuestion(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.a),
-            contentDescription = "Image",
+        AsyncImage(
+            model = question.questionText,
+            contentDescription = "Question",
             modifier = Modifier
         )
         Spacer(modifier = Modifier.height(36.dp))
@@ -44,15 +47,15 @@ fun PictureQuestion(){
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.a),
+            AsyncImage(
+                model = question.correctAnswerText,
                 contentDescription = "Image",
                 modifier = Modifier.clickable {/* img */ }
             )
             Spacer(modifier = Modifier.height(36.dp))
 
-            Image(
-                painter = painterResource(id = R.drawable.a),
+            AsyncImage(
+                model = question.firstOption,
                 contentDescription = "Image",
                 modifier = Modifier.clickable {/* img */ }
             )
@@ -60,8 +63,8 @@ fun PictureQuestion(){
 
         Spacer(modifier = Modifier.height(45.dp))
 
-        Image(
-            painter = painterResource(id = R.drawable.a),
+        AsyncImage(
+            model = question.secondOption,
             contentDescription = "Image",
             modifier = Modifier.clickable {/* img */ }
 
@@ -71,8 +74,3 @@ fun PictureQuestion(){
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun Bankpreview() {
-    PictureQuestion()
-}

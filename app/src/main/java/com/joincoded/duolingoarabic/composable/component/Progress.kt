@@ -10,10 +10,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun Progress() {
+fun Progress(viewModel: GameViewModel) {
     //move this current progress to view model
     var currentProgress by remember { mutableStateOf(0.5f) }
     LinearProgressIndicator(

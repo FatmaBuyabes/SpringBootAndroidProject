@@ -2,6 +2,7 @@ package com.joincoded.duolingoarabic.utils
 
 class Routes {
     companion object {
+        const val questionsRoute = "questionsRoute"
         const val signupRoute = "signupRoute"
         const val loginRoute = "loginRoute"
         const val onBoardingRoute = "onboardingRoute"
