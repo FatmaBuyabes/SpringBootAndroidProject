@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.findNavController
 import com.joincoded.duolingoarabic.composable.screen.LoginScreen
 import com.joincoded.duolingoarabic.nav.NavScreen
 import com.joincoded.duolingoarabic.ui.theme.DuolingoArabicTheme
@@ -29,20 +30,20 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    val viewModelAccount: AuthAccountViewModel = viewModel()
-                    val viewModelGame: GameViewModel = viewModel()
-                    val viewModel: OnboardingViewModel = viewModel()
-
-                    viewModelAccount.login("af@gmail.com", "1234")
-                    Button(onClick = {
-                        viewModelGame.fetchLessonsByChapterId(
-                            viewModelAccount.token?.token,
-                            1
-                        )
-                    }) {
-                        Text(text = "${viewModelAccount.token?.token}")
-                    }
+                    NavScreen()
+//                    val viewModelAccount: AuthAccountViewModel = viewModel()
+//                    val viewModelGame: GameViewModel = viewModel()
+//                    val viewModel: OnboardingViewModel = viewModel()
+//
+//                    viewModelAccount.login("af@gmail.com", "1234")
+//                    Button(onClick = {
+//                        viewModelGame.fetchLessonsByChapterId(
+//                            viewModelAccount.token?.token,
+//                            1
+//                        )
+//                    }) {
+//                        Text(text = "${viewModelAccount.token?.token}")
+//                    }
 //                    NavScreen()
 
 

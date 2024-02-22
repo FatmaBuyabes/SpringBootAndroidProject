@@ -52,11 +52,9 @@ class AuthAccountViewModel : ViewModel() {
                     saveToken(token?.token)
                     getAccountInfo()
                 } else {
-                    // Handle unsuccessful login response
                     println("Login failed with code: ${response.code()}, message: ${response.message()}")
                 }
             } catch (e: Exception) {
-                // Handle exceptions
                 println("Error during login: $e")
             }
         }

@@ -5,13 +5,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.joincoded.duolingoarabic.composable.OnBoard.OnBoardingQuestion
-import com.joincoded.duolingoarabic.composable.component.PictureQuestion
-import com.joincoded.duolingoarabic.composable.component.Progress
 import com.joincoded.duolingoarabic.composable.screen.ChapterScreen
+import com.joincoded.duolingoarabic.composable.screen.LessonScreen
 import com.joincoded.duolingoarabic.composable.screen.LoginScreen
-import com.joincoded.duolingoarabic.composable.screen.PhaseScreen
-import com.joincoded.duolingoarabic.data.User
+import com.joincoded.duolingoarabic.composable.screen.SignUpScreen
 import com.joincoded.duolingoarabic.utils.Routes
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
@@ -21,37 +18,85 @@ import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 @Composable
 fun NavScreen() {
     val navController = rememberNavController()
-    val viewModelAccount: AuthAccountViewModel = viewModel()
-    val viewModelGame: GameViewModel = viewModel()
-    val viewModel: OnboardingViewModel = viewModel()
+    val gameViewModel: GameViewModel = viewModel()
+    val authViewModel: AuthAccountViewModel = viewModel()
+    val onboardingViewModel: OnboardingViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = Routes.onBoardingRoute) {
-        composable(Routes.onBoardingRoute) {
-           // OnBoardingQuestion(viewModel, {})
-        }
 
+    NavHost(navController = navController, startDestination = Routes.loginRoute) {
         composable(Routes.loginRoute) {
-            //LoginScreen(viewModelAccount)
+            LoginScreen(authViewModel, gameViewModel,
+                navigateToChapterScreen = {
+                    navController.navigate(Routes.chaptersRoute)
+                },
+                navigateToSignupScreen = {
+                    navController.navigate(Routes.signupRoute)
+                })
         }
-
+        composable(Routes.signupRoute) {
+            SignUpScreen(authViewModel, gameViewModel) {
+                navController.navigate(Routes.loginRoute) {
+                    popUpTo(Routes.signupRoute) { inclusive = true }
+                }
+            }
+        }
         composable(Routes.chaptersRoute) {
-            ChapterScreen(viewModelGame, viewModelAccount)
-        }
-
-        composable(Routes.lessonsRoute) {
-          //  PhaseScreen(viewModelGame) {
-              //  viewModelGame.currentLesson.value = it
-              //  viewModelGame.fetchQuestionsByLessonId(viewModelAccount.token?.token, it)
-              //  navController.navigate(Routes.questionsRoute)
-          //  }
-        }
-
-        composable(Routes.progressRoute) {
-            Progress(viewModelGame)
+            ChapterScreen(authViewModel, gameViewModel,
+                navigateToLessonScreen = {
+                    navController.navigate(Routes.lessonsRoute)
+                })
         }
 
         composable(Routes.questionsRoute) {
-            PictureQuestion(viewModelGame)
+
         }
+        composable(Routes.lessonsRoute) {
+            LessonScreen(
+                authViewModel = authViewModel,
+                gameViewModel = gameViewModel,
+                navigateToQuestionsScreen = {
+                    navController.navigate(Routes.lessonsRoute)
+                }
+            )
+        }
+
     }
 }
+
+
+//    NavHost(navController = navController, startDestination = Routes.onBoardingRoute) {
+//        composable(Routes.onBoardingRoute) {
+//           OnBoardingQuestion(onboardingViewModel,authViewModel  )}
+//
+//
+//                   composable(Routes.loginRoute) {
+//                       LoginScreen(navController=navController,authViewModel,gameViewModel)
+//                   }
+
+//        composable(Routes.chaptersRoute) {
+//            ChapterScreen( authViewModel,gameViewModel)
+//                         .currentChapter = it
+//                        gameViewModel.fetchLessonsByChapterId(authViewModel.token?.token,it)
+//                         navController.navigate(Routes.lessonsRoute)
+//                    ) }
+//        }
+
+//        composable(Routes.lessonsRoute) {
+//            LessonScreen(navController = navController, authViewModel, gameViewModel) {
+//                gameViewModel.currentLesson.value = it
+//                gameViewModel.fetchQuestionsByLessonId(authViewModel.token?.token, it)
+//                navController.navigate(Routes.questionsRoute)
+//            }
+//        }
+
+//        composable(Routes.progressRoute) {
+//            Progress(authViewModel,gameViewModel)
+//        }
+
+//        composable(Routes.questionsRoute) {
+//            // PictureQuestion(uthViewModel,gameViewModel)
+//        }
+
+
+
+

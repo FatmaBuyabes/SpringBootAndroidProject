@@ -19,12 +19,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun LetterQuestion(viewModel: GameViewModel) {
+fun LetterQuestion(authViewModel: AuthAccountViewModel,
+                   gameViewModel: GameViewModel,
+                   ) {
 
     Column(
         modifier = Modifier
@@ -36,6 +39,7 @@ fun LetterQuestion(viewModel: GameViewModel) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Image(
             painter = painterResource(id = R.drawable.a),
             contentDescription = "Image",

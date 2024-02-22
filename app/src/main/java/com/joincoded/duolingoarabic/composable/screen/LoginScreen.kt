@@ -25,14 +25,30 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.utils.Routes
+import com.joincoded.duolingoarabic.utils.Routes.Companion.chaptersRoute
+import com.joincoded.duolingoarabic.utils.Routes.Companion.signupRoute
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 @Composable
-fun LoginScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
+fun LoginScreen(
+                authViewModel: AuthAccountViewModel,
+                gameViewModel: GameViewModel,
+                navigateToChapterScreen:() -> Unit,
+                navigateToSignupScreen:() -> Unit,
+                ) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
+
+    if (authViewModel.token?.token != null) {
+        gameViewModel.fetchChapters(authViewModel.token?.token)
+        navigateToChapterScreen()
+
+    }
 
 
     Column(
@@ -45,7 +61,7 @@ fun LoginScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
     ) {
 
 
-        Image(painter = painterResource(id = R.drawable.f_and_h_arabic_letters), contentDescription = "Doulingo Logo")
+        Image(painter = painterResource(id = R.drawable.letter), contentDescription = "Doulingo Logo")
         Spacer(
             modifier = Modifier.height(10.dp)
         )
@@ -68,7 +84,13 @@ fun LoginScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
             modifier = Modifier.height(16.dp)
         )
         Button(
-            onClick = { /*Handle login info here*/ },
+            onClick = {
+
+                authViewModel.login(username, password,)
+
+
+
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),
@@ -87,7 +109,9 @@ fun LoginScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
                     append("Sign Up")
                 }
             },
-            modifier = Modifier.clickable(onClick = { /*Handle Navigation to sign up screen */ })
+            modifier = Modifier.clickable(onClick = {
+                navigateToSignupScreen()
+            })
         )
     }
 }
