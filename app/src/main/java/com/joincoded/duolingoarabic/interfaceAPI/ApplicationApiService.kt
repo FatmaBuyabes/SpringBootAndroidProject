@@ -7,6 +7,7 @@ import com.joincoded.duolingoarabic.data.Question
 import com.joincoded.duolingoarabic.data.User
 import com.joincoded.duolingoarabic.data.response.LoginResponse
 import com.joincoded.duolingoarabic.data.response.QuestionResponse
+import com.joincoded.duolingoarabic.data.response.TokenResponse
 import com.joincoded.duolingoarabic.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body

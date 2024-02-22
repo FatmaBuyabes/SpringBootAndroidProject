@@ -22,9 +22,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 @Composable
-fun CompleteQuestion() {
+fun CompleteQuestion(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
     var question by remember { mutableStateOf("") }
 
     Column(

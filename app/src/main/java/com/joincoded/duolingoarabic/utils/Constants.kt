@@ -15,7 +15,7 @@ class Constants {
         const val authorization = "Authorization"
         const val signupEndpoint = "${baseAuth}/signup"
         const val loginEndpoint = "${baseAuth}/login"
-        const val chapterEndpoint = "${baseChapter}/chapters"
+        const val chapterEndpoint = "${baseChapter}/chapter"
         const val progressEndpoint = "${baseProgress}/save"
 
 

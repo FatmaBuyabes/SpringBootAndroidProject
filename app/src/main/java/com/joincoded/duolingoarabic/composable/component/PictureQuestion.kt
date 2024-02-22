@@ -19,11 +19,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun PictureQuestion(viewModel: GameViewModel){
+fun PictureQuestion(viewModel: GameViewModel, authViewModel: AuthAccountViewModel){
     val question = viewModel.questions.value!![viewModel.currentQuestion.value]
 
     Column(
