@@ -23,7 +23,7 @@ import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 
 @Composable
-fun OnBoardingQuestion(viewModel: OnboardingViewModel){
+fun OnBoardingQuestion(viewModel: OnboardingViewModel, navigateToLoginScreen: (Int) -> Unit){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -35,10 +35,9 @@ fun OnBoardingQuestion(viewModel: OnboardingViewModel){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-
             Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image",
+                painter = painterResource(id = R.drawable.onboardingquestion),
+                contentDescription = "The image for the question",
                 modifier = Modifier
             )
             Spacer(modifier = Modifier.height(36.dp))
@@ -48,28 +47,40 @@ fun OnBoardingQuestion(viewModel: OnboardingViewModel){
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.a),
-                    contentDescription = "Image",
-                    modifier = Modifier.clickable {/* img */ }
+                    painter = painterResource(id = R.drawable.onboardingquestion_correct_answer),
+                    contentDescription = "The image for the correct answer",
+                    modifier = Modifier.clickable {
+                        navigateToLoginScreen
+                    }
                 )
                 Spacer(modifier = Modifier.height(36.dp))
 
                 Image(
-                    painter = painterResource(id = R.drawable.a),
-                    contentDescription = "Image",
-                    modifier = Modifier.clickable {/* img */ }
+                    painter = painterResource(id = R.drawable.onboardingquestion___wrong_answer__1),
+                    contentDescription = "The image for the wrong answer #1",
+                    modifier = Modifier.clickable {
+                        navigateToLoginScreen
+                    }
                 )
             }
 
             Spacer(modifier = Modifier.height(45.dp))
 
             Image(
-                painter = painterResource(id = R.drawable.a),
-                contentDescription = "Image",
-                modifier = Modifier.clickable {/* img */ }
+                painter = painterResource(id = R.drawable.onboardingquestion___wrong_answer__2),
+                contentDescription = "The image for the wrong answer #2",
+                modifier = Modifier.clickable {
+                    navigateToLoginScreen
+                }
 
             )
 
         }
+
 }
 
+//@Preview
+//@Composable
+//fun onBoardingQuestionPreview() {
+//    OnBoardingQuestion()
+//}

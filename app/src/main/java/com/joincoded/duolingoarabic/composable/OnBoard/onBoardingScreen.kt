@@ -22,14 +22,12 @@ import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 
 @Composable
-fun onBoardingScreen(viewModel: OnboardingViewModel){
+fun onBoardingScreen(viewModel: OnboardingViewModel, navigateToOnBoardingQuestion: (Int) -> Unit){
 
     Surface(
         modifier = Modifier
             .fillMaxSize()
-
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -39,20 +37,15 @@ fun onBoardingScreen(viewModel: OnboardingViewModel){
                 ),
         ) {
             Button(
-                onClick = { /*Handle sign up info here*/ },
+                onClick = { navigateToOnBoardingQuestion },
                 modifier = Modifier
                     .width(250.dp)
                     .height(130.dp)
                     .align(Alignment.Center)
-
-
-
-
             ) {
                 Text(" ابدأ", fontSize = 80.sp)
 
             }
-
         }
     }
 }

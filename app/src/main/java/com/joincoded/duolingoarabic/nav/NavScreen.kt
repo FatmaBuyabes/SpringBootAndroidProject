@@ -9,9 +9,8 @@ import com.joincoded.duolingoarabic.composable.OnBoard.OnBoardingQuestion
 import com.joincoded.duolingoarabic.composable.component.PictureQuestion
 import com.joincoded.duolingoarabic.composable.component.Progress
 import com.joincoded.duolingoarabic.composable.screen.ChapterScreen
+import com.joincoded.duolingoarabic.composable.screen.LessonScreen
 import com.joincoded.duolingoarabic.composable.screen.LoginScreen
-import com.joincoded.duolingoarabic.composable.screen.PhaseScreen
-import com.joincoded.duolingoarabic.data.User
 import com.joincoded.duolingoarabic.utils.Routes
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
@@ -23,15 +22,19 @@ fun NavScreen() {
     val navController = rememberNavController()
     val viewModelAccount: AuthAccountViewModel = viewModel()
     val viewModelGame: GameViewModel = viewModel()
-    val viewModel: OnboardingViewModel = viewModel()
+    val viewModelOnboarding: OnboardingViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = Routes.onBoardingRoute) {
         composable(Routes.onBoardingRoute) {
-           // OnBoardingQuestion(viewModel, {})
+            OnBoardingQuestion(
+                viewModelOnboarding,
+                navigateToLoginScreen = {
+
+                })
         }
 
         composable(Routes.loginRoute) {
-            //LoginScreen(viewModelAccount)
+            LoginScreen(viewModelGame, viewModelAccount)
         }
 
         composable(Routes.chaptersRoute) {
@@ -39,11 +42,14 @@ fun NavScreen() {
         }
 
         composable(Routes.lessonsRoute) {
-          //  PhaseScreen(viewModelGame) {
-              //  viewModelGame.currentLesson.value = it
-              //  viewModelGame.fetchQuestionsByLessonId(viewModelAccount.token?.token, it)
-              //  navController.navigate(Routes.questionsRoute)
-          //  }
+            LessonScreen(
+                authViewModel = viewModelAccount,
+                viewModel = viewModelGame,
+                navigateToQuestionsScreen = {
+                viewModelGame.currentLesson.value = it
+                viewModelGame.fetchQuestionsByLessonId(viewModelAccount.token?.token, it)
+                navController.navigate(Routes.questionsRoute)
+            })
         }
 
         composable(Routes.progressRoute) {
