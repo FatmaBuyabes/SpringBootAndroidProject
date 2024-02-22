@@ -28,7 +28,7 @@ import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PhaseScreen(viewModel: GameViewModel, navigateToQuestionsScreen: (Int) -> Unit) {
+fun PhaseScreen(authViewModel: AuthAccountViewModel,viewModel: GameViewModel, navigateToQuestionsScreen: (Int) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),

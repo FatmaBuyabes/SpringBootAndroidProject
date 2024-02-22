@@ -27,9 +27,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.joincoded.duolingoarabic.R
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 @Composable
-fun LoginScreen(viewModel: AuthAccountViewModel = androidx.lifecycle.viewmodel.compose.viewModel() ) {
+fun LoginScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 

@@ -17,6 +17,7 @@ import com.joincoded.duolingoarabic.nav.NavScreen
 import com.joincoded.duolingoarabic.ui.theme.DuolingoArabicTheme
 import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
 import com.joincoded.duolingoarabic.viewModel.GameViewModel
+import com.joincoded.duolingoarabic.viewModel.OnboardingViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavScreen()
+
+                    val viewModelAccount: AuthAccountViewModel = viewModel()
+                    val viewModelGame: GameViewModel = viewModel()
+                    val viewModel: OnboardingViewModel = viewModel()
+
+                    viewModelAccount.login("af@gmail.com", "1234")
+                    Button(onClick = {
+                        viewModelGame.fetchLessonsByChapterId(
+                            viewModelAccount.token?.token,
+                            1
+                        )
+                    }) {
+                        Text(text = "${viewModelAccount.token?.token}")
+                    }
+//                    NavScreen()
+
 
                 }
             }

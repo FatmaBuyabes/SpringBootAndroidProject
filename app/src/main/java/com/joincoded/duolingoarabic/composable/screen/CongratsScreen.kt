@@ -19,11 +19,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.joincoded.duolingoarabic.R
+import com.joincoded.duolingoarabic.viewModel.AuthAccountViewModel
+import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CongratsScreen() {
+fun CongratsScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
 
     TopAppBar(
         title = { },

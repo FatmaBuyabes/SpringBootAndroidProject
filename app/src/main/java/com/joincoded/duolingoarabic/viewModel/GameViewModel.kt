@@ -9,9 +9,11 @@ import com.joincoded.duolingoarabic.data.Lesson
 import com.joincoded.duolingoarabic.data.Progress
 import com.joincoded.duolingoarabic.data.Question
 import com.joincoded.duolingoarabic.interfaceAPI.ApplicationApiService
+import com.joincoded.duolingoarabic.singelton.RetrofitHelper
 import kotlinx.coroutines.launch
 
-class GameViewModel(private val apiService: ApplicationApiService) : ViewModel() {
+class GameViewModel : ViewModel() {
+    private val apiService = RetrofitHelper.getInstance().create(ApplicationApiService::class.java)
     var currentQuestion: MutableState<Int> = mutableStateOf(0)
     var currentChapter: MutableState<Int> = mutableStateOf(0)
     var currentLesson: MutableState<Int> = mutableStateOf(0)

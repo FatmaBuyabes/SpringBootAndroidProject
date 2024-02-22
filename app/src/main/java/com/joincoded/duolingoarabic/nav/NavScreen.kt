@@ -27,11 +27,11 @@ fun NavScreen() {
 
     NavHost(navController = navController, startDestination = Routes.onBoardingRoute) {
         composable(Routes.onBoardingRoute) {
-            OnBoardingQuestion(viewModel)
+           // OnBoardingQuestion(viewModel, {})
         }
 
         composable(Routes.loginRoute) {
-            LoginScreen(viewModelAccount)
+            //LoginScreen(viewModelAccount)
         }
 
         composable(Routes.chaptersRoute) {
@@ -39,11 +39,11 @@ fun NavScreen() {
         }
 
         composable(Routes.lessonsRoute) {
-            PhaseScreen(viewModelGame) {
-                viewModelGame.currentLesson.value = it
-                viewModelGame.fetchQuestionsByLessonId(viewModelAccount.token?.token, it)
-                navController.navigate(Routes.questionsRoute)
-            }
+          //  PhaseScreen(viewModelGame) {
+              //  viewModelGame.currentLesson.value = it
+              //  viewModelGame.fetchQuestionsByLessonId(viewModelAccount.token?.token, it)
+              //  navController.navigate(Routes.questionsRoute)
+          //  }
         }
 
         composable(Routes.progressRoute) {

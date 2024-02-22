@@ -26,7 +26,7 @@ import com.joincoded.duolingoarabic.viewModel.GameViewModel
 
 
 @Composable
-fun SignUpScreen(viewModel: AuthAccountViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun SignUpScreen(viewModel: GameViewModel, authViewModel: AuthAccountViewModel) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -75,7 +75,7 @@ fun SignUpScreen(viewModel: AuthAccountViewModel = androidx.lifecycle.viewmodel.
             modifier = Modifier.height(16.dp)
         )
         Button(
-            onClick = { viewModel.signup(username, password, "",email)},
+            onClick = { authViewModel.signup(username, password, "",email)},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
